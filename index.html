@@ -118,7 +118,7 @@ body{background:var(--bg);color:var(--t1);font-family:'Sora',sans-serif;padding-
 <header id="hdr">
   <div>
     <div class="hdr-title">LOG DE TREINO HÍBRIDO</div>
-    <div class="hdr-sub">HIPERTROFIA PRIORITÁRIA · 5X MUSCULAÇÃO + 2X CORRIDA</div>
+    <div class="hdr-sub">HIPERTROFIA PRIORITÁRIA · 5X MUSCULAÇÃO + 3X CORRIDA · 8 SEMANAS</div>
   </div>
   <div class="wbtns" id="wbtns"></div>
 </header>
@@ -144,104 +144,117 @@ const DAYS_ORDER = ['seg','ter','qua','qui','sex','sab','dom'];
 
 const D = {
   seg:{
-    label:'Segunda',short:'Seg',type:'Push',color:'green',muscles:'Peito · Ombros · Tríceps',noCardio:true,
-    info:'Dia pesado de empurrar. Prioridade para compostos no início, isoladores no final e progressão de carga/reps dentro da faixa alvo.',
+    label:'Segunda',short:'Seg',type:'Push + Corrida Leve',color:'green',muscles:'Peito · Ombros · Tríceps · Base aeróbica',cardioFirst:false,
+    info:'Dia de empurrar + corrida leve. A corrida de segunda é regenerativa/base: serve para acumular cardio, ajudar na queima de gordura e não pode atrapalhar o Legs A de terça.',
     exercises:[
-      {id:'s1',name:'Supino Reto',mus:'Peito',sets:4,r1:6,r2:10,rest1:120,rest2:150,note:'Principal do dia. Trabalha pesado e tenta progredir carga ou reps toda semana.'},
-      {id:'s2',name:'Supino Inclinado',mus:'Peito sup.',sets:3,r1:6,r2:10,rest1:90,rest2:120},
-      {id:'s3',name:'Crucifixo',mus:'Peito isol.',sets:3,r1:10,r2:12,rest1:45,rest2:60,note:'Controle total no alongamento e 1s de contração no fechamento.'},
-      {id:'s4',name:'Desenvolvimento c/ Halteres',mus:'Deltóide',sets:3,r1:6,r2:10,rest1:90,rest2:120},
-      {id:'s5',name:'Elevação Lateral',mus:'Deltóide lat.',sets:4,r1:10,r2:15,rest1:45,rest2:60},
+      {id:'s1',name:'Supino Reto',mus:'Peito',sets:4,r1:6,r2:8,rest1:120,rest2:180,note:'Principal do dia. Progressão dupla: bateu 4x8 com boa forma, sobe carga na próxima semana.'},
+      {id:'s2',name:'Supino Inclinado c/ Halteres ou Máquina',mus:'Peito sup.',sets:3,r1:8,r2:12,rest1:90,rest2:120},
+      {id:'s3',name:'Crucifixo Máquina ou Cabo',mus:'Peito isol.',sets:3,r1:10,r2:15,rest1:60,rest2:75,note:'Controle total no alongamento e 1s de contração no fechamento.'},
+      {id:'s4',name:'Desenvolvimento c/ Halteres ou Máquina',mus:'Deltóide',sets:3,r1:6,r2:10,rest1:90,rest2:120},
+      {id:'s5',name:'Elevação Lateral',mus:'Deltóide lat.',sets:4,r1:12,r2:20,rest1:45,rest2:60},
       {id:'s6',name:'Tríceps Pulley',mus:'Tríceps',sets:3,r1:8,r2:12,rest1:60,rest2:75},
-      {id:'s7',name:'Tríceps Francês na Polia',mus:'Tríceps isol.',sets:3,r1:10,r2:12,rest1:45,rest2:60},
+      {id:'s7',name:'Tríceps Francês na Polia',mus:'Tríceps isol.',sets:2,r1:10,r2:15,rest1:60,rest2:60},
     ],
+    cardio:{type:'continuous',label:'Corrida Leve / Regenerativa',
+      wk:{
+        1:{dur:'20 min',spMin:7.0,spMax:7.5,warm:'5.5–6.0',warmDur:5,tip:'Leve e conversável. O objetivo é terminar melhor do que começou.'},
+        2:{dur:'22–25 min',spMin:7.2,spMax:7.7,warm:'5.5–6.0',warmDur:5,tip:'Aumenta um pouco o tempo, sem transformar em treino forte.'},
+        3:{dur:'20–25 min',spMin:7.2,spMax:7.8,warm:'5.5–6.0',warmDur:5,tip:'Mantém leve para preservar o treino de perna da terça.'},
+        4:{dur:'20 min',spMin:7.0,spMax:7.5,warm:'5.5–6.0',warmDur:5,tip:'Semana de consolidação. Sem buscar recorde.'},
+        5:{dur:'25 min',spMin:7.5,spMax:8.0,warm:'5.5–6.0',warmDur:5,tip:'Leve/moderado, ainda conversável.'},
+        6:{dur:'20–25 min',spMin:7.5,spMax:8.0,warm:'5.5–6.0',warmDur:5,tip:'Se a perna estiver pesada, fique no limite inferior.'},
+        7:{dur:'20 min',spMin:7.0,spMax:7.8,warm:'5.5–6.0',warmDur:5,tip:'Semana de pico controlado. Corrida fácil.'},
+        8:{dur:'15–20 min',spMin:7.0,spMax:7.5,warm:'5.5–6.0',warmDur:5,tip:'Semana do teste. Serve só para manter o corpo solto.'}
+      }}
   },
   ter:{
     label:'Terça',short:'Ter',type:'Legs A',color:'amber',muscles:'Quadríceps · Glúteos · Posterior',noCardio:true,
-    info:'Foco dominante em quadríceps, mas sem abandonar posterior e glúteos. O búlgaro entra no lugar do hack para reduzir redundância e aumentar estímulo unilateral.',
+    info:'Foco dominante em quadríceps. Treino pesado da semana para pernas, sem corrida. Trabalhe forte, mas preserve 1–2 repetições na reserva nos compostos.',
     exercises:[
-      {id:'t1',name:'Agachamento Smith',mus:'Quadríceps',sets:4,r1:6,r2:10,rest1:120,rest2:150,note:'Primeiro exercício do dia. Profundidade segura e cadência controlada.'},
-      {id:'t2',name:'Leg Press 45°',mus:'Quad + Glúteo',sets:4,r1:8,r2:12,rest1:90,rest2:120},
-      {id:'t3',name:'Agachamento Búlgaro',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:75,rest2:90,note:'Substitui o hack. Excelente para equilíbrio, glúteo e recrutamento unilateral.'},
-      {id:'t4',name:'Cadeira Extensora',mus:'Quad isol.',sets:3,r1:10,r2:15,rest1:45,rest2:60},
-      {id:'t5',name:'Mesa Flexora',mus:'Posterior',sets:3,r1:8,r2:12,rest1:60,rest2:75,note:'Estímulo complementar de posterior para deixar o dia mais completo.'},
-      {id:'t6',name:'Panturrilha Sentado',mus:'Sóleo',sets:4,r1:12,r2:20,rest1:45,rest2:60},
+      {id:'t1',name:'Agachamento Smith ou Livre',mus:'Quadríceps',sets:4,r1:6,r2:8,rest1:120,rest2:180,note:'Principal do dia. Profundidade segura, tronco firme e cadência controlada.'},
+      {id:'t2',name:'Leg Press 45°',mus:'Quad + Glúteo',sets:4,r1:8,r2:12,rest1:120,rest2:120},
+      {id:'t3',name:'Agachamento Búlgaro',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:90,rest2:120,note:'Excelente para equilíbrio, glúteo e recrutamento unilateral.'},
+      {id:'t4',name:'Cadeira Extensora',mus:'Quad isol.',sets:3,r1:10,r2:15,rest1:60,rest2:75,note:'Última série pode chegar perto da falha. Drop-set só ocasionalmente.'},
+      {id:'t5',name:'Mesa Flexora',mus:'Posterior',sets:3,r1:8,r2:12,rest1:75,rest2:90,note:'Estímulo complementar de posterior, sem transformar em segundo dia pesado de posterior.'},
+      {id:'t6',name:'Panturrilha Sentado',mus:'Sóleo',sets:4,r1:10,r2:20,rest1:45,rest2:60},
     ],
   },
   qua:{
-    label:'Quarta',short:'Qua',type:'Corrida + Core',color:'red',muscles:'Base aeróbica · Core',cardioFirst:true,
-    info:'Cardio em dia separado das pernas pesadas para reduzir interferência. O objetivo é evoluir sua capacidade contínua para fechar 5 km em 1–2 meses.',
+    label:'Quarta',short:'Qua',type:'Corrida Principal + Core',color:'red',muscles:'Qualidade de corrida · Core',cardioFirst:true,
+    info:'Dia principal da corrida. Aqui entram intervalados, tempo run, progressivo ou ativação conforme a semana. A meta final é 5 km abaixo de 30 minutos sem sacrificar hipertrofia.',
     exercises:[
-      {id:'q1',name:'Crunch na Polia c/ Corda',mus:'Abs pesado',sets:4,r1:8,r2:12,rest1:60,rest2:75,note:'Controle total na subida e 1s de contração.'},
-      {id:'q2',name:'Abdominal na Polia Ajoelhado',mus:'Abs pesado',sets:4,r1:8,r2:12,rest1:60,rest2:75,note:'Foco em flexão da coluna, sem puxar com braço.'},
+      {id:'q1',name:'Crunch na Polia c/ Corda',mus:'Abs pesado',sets:3,r1:8,r2:12,rest1:60,rest2:75,note:'Controle total na subida e 1s de contração.'},
       {id:'q3',name:'Elevação de Pernas na Paralela',mus:'Abs inferior',sets:3,r1:10,r2:15,rest1:45,rest2:60,note:'Subida controlada e descida lenta.'},
-      {id:'q4',name:'Prancha Isométrica',mus:'Core estab.',sets:3,r1:30,r2:45,rest1:30,rest2:45,isTime:true,unit:'seg'},
+      {id:'q4',name:'Prancha Isométrica',mus:'Core estab.',sets:3,r1:30,r2:60,rest1:45,rest2:60,isTime:true,unit:'seg'},
     ],
-    cardio:{type:'intervals',label:'Corrida Intervalada',
+    cardio:{type:'mixed',label:'Corrida de Qualidade',
       wk:{
-        1:{warm:5,warmSp:'5.0',blocks:5,wDur:'3:00',wSp:'8.0',rDur:'1:30',rSp:'4.5',cool:5,note:'Ponto de partida atual. Mantém a qualidade e fecha todos os blocos.'},
-        2:{warm:5,warmSp:'5.0',blocks:5,wDur:'3:30',wSp:'8.0',rDur:'1:30',rSp:'4.5',cool:5,note:'Aumenta o tempo correndo sem subir a exigência de velocidade.'},
-        3:{warm:5,warmSp:'5.5',blocks:5,wDur:'4:00',wSp:'8.0',rDur:'1:30',rSp:'4.5',cool:5,note:'Mais tempo sustentando o ritmo. Sem pressa.'},
-        4:{warm:5,warmSp:'5.5',blocks:4,wDur:'5:00',wSp:'8.0',rDur:'1:30',rSp:'4.5',cool:5,note:'Queda no número de blocos, mas aumento da duração total de corrida.'},
-        5:{warm:5,warmSp:'5.5',blocks:4,wDur:'6:00',wSp:'8.2',rDur:'1:15',rSp:'4.5',cool:5,note:'Progressão para começar a construir mais resistência contínua.'},
-        6:{warm:5,warmSp:'5.5',blocks:3,wDur:'8:00',wSp:'8.2',rDur:'1:15',rSp:'4.5',cool:5,note:'Blocos longos. A prioridade é sustentar o ritmo.'},
-        7:{warm:5,warmSp:'5.5',blocks:2,wDur:'10:00',wSp:'8.5',rDur:'1:00',rSp:'4.5',cool:5,note:'Quase corrida contínua. Controle respiratório manda.'},
-        8:{warm:5,warmSp:'5.5',blocks:1,wDur:'20:00',wSp:'8.5',rDur:'0:00',rSp:'4.5',cool:5,note:'Teste contínuo, tentando fechar o máximo de tempo sem caminhar.'}
+        1:{kind:'intervals',warm:5,warmSp:'5.5–6.0',blocks:5,wDur:'3:00',wSp:'8.5',rDur:'1:30',rSp:'5.0',cool:5,note:'Intervalado controlado. Ritmo forte, mas sem virar prova.'},
+        2:{kind:'phases',note:'Ritmo contínuo. Aprende a sustentar velocidade sem pausa.',phases:[{phase:'Aquecimento',speed:'5.5–6.0 km/h',dur:'5 min'},{phase:'Ritmo',speed:'8.2–8.5 km/h',dur:'25 min',strong:true},{phase:'Cool Down',speed:'4.5–5.0 km/h',dur:'5 min'}]},
+        3:{kind:'intervals',warm:5,warmSp:'5.5–6.0',blocks:5,wDur:'3:00',wSp:'9.0',rDur:'1:30',rSp:'5.0–5.5',cool:5,note:'Primeiro contato mais claro com ritmo acima da base.'},
+        4:{kind:'phases',note:'Progressivo controlado. Semana de consolidação, não de se matar.',phases:[{phase:'Aquecimento',speed:'5.5–6.0 km/h',dur:'5 min'},{phase:'Bloco 1',speed:'8.0 km/h',dur:'10 min'},{phase:'Bloco 2',speed:'8.5 km/h',dur:'10 min'},{phase:'Bloco 3',speed:'9.0 km/h',dur:'5 min',strong:true},{phase:'Cool Down',speed:'4.5–5.0 km/h',dur:'5 min'}]},
+        5:{kind:'intervals',warm:5,warmSp:'5.5–6.0',blocks:6,wDur:'2:00',wSp:'9.5–10.0',rDur:'1:30',rSp:'5.5',cool:5,note:'Intervalado específico. Acostuma o corpo com ritmo de sub-30.'},
+        6:{kind:'phases',note:'Tempo run. Ritmo sustentado moderado-forte.',phases:[{phase:'Aquecimento',speed:'5.5–6.0 km/h',dur:'5 min'},{phase:'Tempo',speed:'9.0–9.3 km/h',dur:'20 min',strong:true},{phase:'Cool Down',speed:'4.5–5.0 km/h',dur:'5 min'}]},
+        7:{kind:'intervals',warm:5,warmSp:'5.5–6.0',blocks:5,wDur:'3:00',wSp:'10.0',rDur:'2:00',rSp:'6.0',cool:5,note:'Específico para sub-30. Forte, mas controlado.'},
+        8:{kind:'intervals',warm:5,warmSp:'5.5–6.0',blocks:3,wDur:'2:00',wSp:'9.5–10.0',rDur:'2:00',rSp:'5.5–6.0',cool:5,note:'Ativação curta. É para chegar solto no teste de sábado, não cansado.'}
       }}
   },
   qui:{
     label:'Quinta',short:'Qui',type:'Pull',color:'blue',muscles:'Costas · Bíceps · Deltoide posterior',noCardio:true,
-    info:'Sessão puxada completa com vertical + horizontal, seguida de bíceps. A remada máquina fica com pegada fechada/neutra para mais dorsal, e o reverse peck deck entra no lugar do face pull para hipertrofia de deltoide posterior.',
+    info:'Sessão puxada completa com vertical + horizontal. Mantém volume suficiente para costas sem estourar recuperação para o Legs B de sexta.',
     exercises:[
-      {id:'qu1',name:'Puxada Frente',mus:'Dorsais',sets:4,r1:8,r2:12,rest1:75,rest2:90},
+      {id:'qu1',name:'Puxada Frente',mus:'Dorsais',sets:4,r1:8,r2:12,rest1:90,rest2:90},
       {id:'qu2',name:'Remada Baixa Triângulo',mus:'Costas med.',sets:4,r1:6,r2:10,rest1:90,rest2:120},
       {id:'qu3',name:'Remada Máquina (Pegada Fechada/Neutra)',mus:'Dorsais',sets:3,r1:8,r2:12,rest1:75,rest2:90,note:'Use pegada fechada/neutra para enfatizar dorsal e facilitar progressão de carga.'},
-      {id:'qu4',name:'Pulldown c/ Barra',mus:'Dorsais larg.',sets:3,r1:10,r2:12,rest1:60,rest2:75},
-      {id:'qu5',name:'Reverse Peck Deck',mus:'Deltoide post.',sets:3,r1:12,r2:15,rest1:45,rest2:60,note:'Foco em deltoide posterior. Abre com os cotovelos e segura 1s na contração.'},
-      {id:'qu6',name:'Rosca Direta W',mus:'Bíceps',sets:3,r1:6,r2:10,rest1:60,rest2:75},
-      {id:'qu7',name:'Rosca Martelo Polia c/ Corda',mus:'Braquial',sets:3,r1:8,r2:12,rest1:45,rest2:60},
+      {id:'qu4',name:'Pulldown c/ Barra ou Corda',mus:'Dorsais larg.',sets:3,r1:10,r2:15,rest1:60,rest2:75},
+      {id:'qu5',name:'Reverse Peck Deck',mus:'Deltoide post.',sets:3,r1:12,r2:20,rest1:45,rest2:60,note:'Foco em deltoide posterior. Abre com os cotovelos e segura 1s na contração.'},
+      {id:'qu6',name:'Rosca Direta W',mus:'Bíceps',sets:3,r1:6,r2:10,rest1:75,rest2:90},
+      {id:'qu7',name:'Rosca Martelo Polia c/ Corda',mus:'Braquial',sets:3,r1:8,r2:12,rest1:60,rest2:75},
     ],
   },
   sex:{
-    label:'Sexta',short:'Sex',type:'Lower',color:'amber',muscles:'Posterior · Glúteos · Quadríceps',noCardio:true,
-    info:'Foco em posterior e glúteo, mas mantendo estímulo útil de quadríceps. Dia para trabalhar hinge pesado e complementar com unilateral.',
+    label:'Sexta',short:'Sex',type:'Legs B + Core',color:'amber',muscles:'Posterior · Glúteos · Quadríceps · Core leve',noCardio:true,
+    info:'Foco em posterior e glúteo com volume inteligente. Mesa + cadeira flexora coexistem, mas a cadeira entra como finalizadora. Ao final, entra um core simples e leve: supra, infra e prancha. Na semana 8, reduza volume e não falhe: teste de 5 km será no sábado.',
     exercises:[
-      {id:'sx1',name:'Stiff c/ Barra',mus:'Posterior',sets:4,r1:6,r2:10,rest1:120,rest2:150,note:'Movimento principal. Mantém lombar neutra e quadril recuando.'},
-      {id:'sx2',name:'Hip Thrust c/ Barra',mus:'Glúteo',sets:4,r1:8,r2:12,rest1:90,rest2:120},
-      {id:'sx3',name:'Mesa Flexora',mus:'Isquiotibiais',sets:4,r1:8,r2:12,rest1:75,rest2:90},
-      {id:'sx4',name:'Cadeira Flexora',mus:'Isquiotibiais',sets:3,r1:10,r2:12,rest1:60,rest2:75},
-      {id:'sx5',name:'Leg Press 45°',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:90,rest2:120,note:'Troca o afundo por uma opção mais estável e pesada para quadríceps.'},
-      {id:'sx6',name:'Cadeira Abdutora',mus:'Glúteo med.',sets:3,r1:12,r2:15,rest1:45,rest2:60},
-      {id:'sx7',name:'Panturrilha em Pé',mus:'Panturrilha',sets:4,r1:12,r2:20,rest1:45,rest2:60},
+      {id:'sx1',name:'Stiff c/ Barra',mus:'Posterior',sets:4,r1:6,r2:8,rest1:120,rest2:180,note:'Movimento principal. Mantenha lombar neutra e deixe 1–2 reps na reserva.'},
+      {id:'sx2',name:'Hip Thrust c/ Barra',mus:'Glúteo',sets:4,r1:8,r2:12,rest1:120,rest2:120},
+      {id:'sx3',name:'Mesa Flexora',mus:'Isquiotibiais',sets:3,r1:8,r2:12,rest1:75,rest2:90},
+      {id:'sx4',name:'Cadeira Flexora',mus:'Isquiotibiais',sets:2,r1:10,r2:15,rest1:60,rest2:75,note:'Finalizadora. Não precisa competir com a mesa flexora em volume.'},
+      {id:'sx5',name:'Leg Press 45° — Pés Médios/Altos',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:90,rest2:120,note:'Estímulo geral de perna sem precisar outro agachamento pesado.'},
+      {id:'sx6',name:'Cadeira Abdutora',mus:'Glúteo med.',sets:3,r1:12,r2:20,rest1:45,rest2:60},
+      {id:'sx7',name:'Panturrilha em Pé',mus:'Panturrilha',sets:4,r1:10,r2:20,rest1:45,rest2:60},
+      {id:'sx8',name:'Abdominal Supra',mus:'Core leve',sets:3,r1:12,r2:20,rest1:30,rest2:45,note:'Core simples pós-Legs B. Controle a subida e não transforme em treino até a falha.'},
+      {id:'sx9',name:'Abdominal Infra',mus:'Core leve',sets:3,r1:10,r2:15,rest1:30,rest2:45,note:'Mantenha a lombar estável. Menos amplitude com controle vale mais que roubar o movimento.'},
+      {id:'sx10',name:'Prancha',mus:'Core estab.',sets:3,r1:30,r2:60,rest1:30,rest2:45,isTime:true,unit:'seg',note:'Finalização curta. Faça firme, sem perder postura.'},
     ],
   },
   sab:{
-    label:'Sábado',short:'Sáb',type:'Upper + Corrida',color:'green',muscles:'Peito · Costas · Ombros · Corrida leve',cardioFirst:false,
-    info:'Upper de volume moderado para bater frequência 2x na semana sem moer o corpo. A corrida entra depois, leve e progressiva, aproveitando o domingo como descanso total.',
+    label:'Sábado',short:'Sáb',type:'Upper + Longuinho',color:'green',muscles:'Peito · Costas · Ombros · Corrida',cardioFirst:false,
+    info:'Upper de volume moderado + corrida longa/leves. O sábado constrói resistência. Se o posterior da sexta estiver pesado, reduza ritmo ou transforme em caminhada inclinada.',
     exercises:[
-      {id:'sb1',name:'Supino Inclinado c/ Halteres',mus:'Peito sup.',sets:3,r1:8,r2:12,rest1:75,rest2:90},
-      {id:'sb2',name:'Remada Unilateral',mus:'Costas',sets:3,r1:8,r2:12,rest1:75,rest2:90},
+      {id:'sb1',name:'Supino Inclinado c/ Halteres',mus:'Peito sup.',sets:3,r1:8,r2:12,rest1:90,rest2:90},
+      {id:'sb2',name:'Remada Unilateral',mus:'Costas',sets:3,r1:8,r2:12,rest1:90,rest2:90},
       {id:'sb3',name:'Desenvolvimento Máquina ou Halteres',mus:'Ombros',sets:3,r1:8,r2:12,rest1:75,rest2:90},
       {id:'sb4',name:'Puxada Neutra',mus:'Dorsais',sets:3,r1:8,r2:12,rest1:75,rest2:90},
-      {id:'sb5',name:'Elevação Lateral',mus:'Deltóide lat.',sets:3,r1:12,r2:15,rest1:45,rest2:60},
-      {id:'sb6',name:'Rosca Alternada',mus:'Bíceps',sets:2,r1:10,r2:12,rest1:45,rest2:60},
-      {id:'sb7',name:'Tríceps Corda',mus:'Tríceps',sets:2,r1:10,r2:12,rest1:45,rest2:60},
+      {id:'sb5',name:'Elevação Lateral',mus:'Deltóide lat.',sets:3,r1:12,r2:20,rest1:45,rest2:60},
+      {id:'sb6',name:'Rosca Alternada',mus:'Bíceps',sets:2,r1:10,r2:15,rest1:60,rest2:60},
+      {id:'sb7',name:'Tríceps Corda',mus:'Tríceps',sets:2,r1:10,r2:15,rest1:60,rest2:60},
     ],
-    cardio:{type:'continuous',label:'Corrida Contínua Leve/Progressiva',
+    cardio:{type:'continuous',label:'Longuinho / Teste 5K',
       wk:{
-        1:{dur:'20 min',spMin:6.5,spMax:7.0,warm:'5.0',warmDur:5,tip:'Se 20 min contínuos ainda estiverem pesados, use run/walk e complete o tempo.'},
-        2:{dur:'22 min',spMin:6.8,spMax:7.0,warm:'5.0',warmDur:5,tip:'Tente prolongar o tempo correndo antes de caminhar.'},
-        3:{dur:'24 min',spMin:7.0,spMax:7.2,warm:'5.0',warmDur:5,tip:'Se travar, caminhe 1 a 2 min e volte.'},
-        4:{dur:'26 min',spMin:7.0,spMax:7.5,warm:'5.0',warmDur:5,tip:'Progressão segura para construir base sem exagerar.'},
-        5:{dur:'28 min',spMin:7.2,spMax:7.5,warm:'5.0',warmDur:5,tip:'Mantenha confortável. O sábado é base aeróbica, não tiro.'},
-        6:{dur:'30 min',spMin:7.2,spMax:7.8,warm:'5.0',warmDur:5,tip:'Se estiver sólido, passe a sustentar mais tempo contínuo.'},
-        7:{dur:'32 min',spMin:7.5,spMax:8.0,warm:'5.0',warmDur:5,tip:'Suba tempo ou ritmo, mas não os dois de uma vez.'},
-        8:{dur:'35 min ou 5 km',spMin:7.5,spMax:8.2,warm:'5.0',warmDur:5,tip:'Semana de consolidar. Pode tentar 5 km, ou completar 35 min contínuos.'}
+        1:{dur:'30 min',spMin:7.5,spMax:8.0,warm:'5.5–6.0',warmDur:5,tip:'Longuinho leve. Não é prova.'},
+        2:{dur:'32–35 min',spMin:7.5,spMax:8.0,warm:'5.5–6.0',warmDur:5,tip:'Construção de base aeróbica.'},
+        3:{dur:'35 min',spMin:7.8,spMax:8.2,warm:'5.5–6.0',warmDur:5,tip:'Sustente sem travar a perna.'},
+        4:{dur:'5 km leve',spMin:7.8,spMax:8.5,warm:'5.5–6.0',warmDur:5,tip:'Primeiro teste de distância. Esquece tempo; prova que os 5 km estão no bolso.'},
+        5:{dur:'38–40 min',spMin:8.0,spMax:8.3,warm:'5.5–6.0',warmDur:5,tip:'Longuinho controlado. Sem sprint final.'},
+        6:{dur:'5 km moderado',spMin:8.7,spMax:9.2,warm:'5.5–6.0',warmDur:5,tip:'Aproxima do ritmo de prova sem fazer máximo.'},
+        7:{dur:'30 min contínuos',spMin:9.0,spMax:9.5,warm:'5.5–6.0',warmDur:5,tip:'Pico controlado. Forte, mas sem se matar.'},
+        8:{dur:'TESTE 5 KM',spMin:9.5,spMax:10.5,warm:'5.5–6.0',warmDur:5,tip:'Estratégia: km1 9.5–9.8, km2–3 10.0, km4 10.2, km5 10.5 se estiver bem. Meta: sub-30.'}
       }}
   },
   dom:{
     label:'Domingo',short:'Dom',type:'Descanso',color:'blue',muscles:'Recuperação total',noCardio:true,
-    info:'Descanso completo. Caminhada leve opcional, mobilidade e foco em sono, hidratação e alimentação.',
+    info:'Descanso completo. Caminhada leve opcional, mobilidade e foco em sono, hidratação e alimentação. Não transforme domingo em quarto treino de corrida.',
     exercises:[],
   },
 };
@@ -285,30 +298,45 @@ function renderCardio(dayId){
   const cData=getC(W,dayId); const col=cv(d.color); const cbgv=cbg(d.color);
   let body='';
 
-  if(c.type==='continuous'){
-    body=`
-    <div class="pline"><span class="p-phase">Aquecimento</span><span class="p-speed" style="color:var(--t2)">${p.warm} km/h</span><span class="p-dur">${p.warmDur} min</span><span class="p-tip">caminhada rápida + trote leve</span></div>
-    <div class="pline"><span class="p-phase">Corrida</span><span class="p-speed" style="color:var(${col})">${p.spMin}${p.spMax!==p.spMin?'–'+p.spMax:''} km/h</span><span class="p-dur">${p.dur}</span><span class="p-tip">${p.tip}</span></div>
-    <div class="pline"><span class="p-phase">Cool Down</span><span class="p-speed" style="color:var(--t2)">4.5–5.0 km/h</span><span class="p-dur">3–5 min</span></div>`;
-  } else if(c.type==='intervals'){
+  const renderPhases = (phases, note='') => {
+    let lines = phases.map(ph=>`
+    <div class="pline"><span class="p-phase">${ph.phase}</span><span class="p-speed" style="color:${ph.strong?`var(${col})`:'var(--t2)'}">${ph.speed}</span><span class="p-dur">${ph.dur}</span>${ph.tip?`<span class="p-tip">${ph.tip}</span>`:''}</div>`).join('');
+    if(note) lines += `<div style="margin-top:8px;font-size:11px;color:var(--amber);font-style:italic">⚑ ${note}</div>`;
+    return lines;
+  };
+
+  const renderIntervals = (cfg) => {
     const tiros=getTiros(W,dayId);
-    const blocoBoxes=Array.from({length:p.blocks},(_,i)=>{
+    const blocoBoxes=Array.from({length:cfg.blocks},(_,i)=>{
       const done=tiros.includes(i);
-      return`<button class="tiro-btn${done?' done-t':''}" style="${done?`color:var(${col});background:var(${cbgv});border-color:var(${col})`:''}" onclick="toggleTiro('${dayId}',${i},${p.blocks})">${i+1}</button>`;
+      return`<button class="tiro-btn${done?' done-t':''}" style="${done?`color:var(${col});background:var(${cbgv});border-color:var(${col})`:''}" onclick="toggleTiro('${dayId}',${i},${cfg.blocks})">${i+1}</button>`;
     }).join('');
-    body=`
+    return `
     <div class="hiit-grid">
-      <div class="hiit-box"><span class="hl">Blocos</span><span class="hv" style="color:var(${col})">${p.blocks}×</span></div>
-      <div class="hiit-box"><span class="hl">Ritmo</span><span class="hv" style="color:var(${col})">${p.wSp} km/h</span></div>
-      <div class="hiit-box"><span class="hl">Work</span><span class="hv">${p.wDur}</span></div>
-      <div class="hiit-box"><span class="hl">Rec</span><span class="hv">${p.rDur}</span></div>
+      <div class="hiit-box"><span class="hl">Blocos</span><span class="hv" style="color:var(${col})">${cfg.blocks}×</span></div>
+      <div class="hiit-box"><span class="hl">Ritmo</span><span class="hv" style="color:var(${col})">${cfg.wSp} km/h</span></div>
+      <div class="hiit-box"><span class="hl">Work</span><span class="hv">${cfg.wDur}</span></div>
+      <div class="hiit-box"><span class="hl">Rec</span><span class="hv">${cfg.rDur}</span></div>
     </div>
-    <div class="pline"><span class="p-phase">Aquecimento</span><span class="p-speed" style="color:var(--t2)">${p.warmSp} km/h</span><span class="p-dur">${p.warm} min</span></div>
-    <div class="pline"><span class="p-phase">Bloco</span><span class="p-speed" style="color:var(${col})">${p.wSp} km/h</span><span class="p-dur">${p.wDur}</span><button class="timer-btn" onclick="openTimerFromClock('${p.wDur}','Bloco forte')">⏱</button></div>
-    <div class="pline"><span class="p-phase">Recuperação</span><span class="p-speed" style="color:var(--t2)">${p.rSp} km/h</span><span class="p-dur">${p.rDur}</span><button class="timer-btn" onclick="openTimerFromClock('${p.rDur}','Recuperação')">⏱</button></div>
-    <div class="pline"><span class="p-phase">Cool Down</span><span class="p-speed" style="color:var(--t2)">4.5–5.0 km/h</span><span class="p-dur">${p.cool} min</span></div>
-    <div style="margin-top:8px;font-size:11px;color:var(--amber);font-style:italic">⚑ ${p.note}</div>
-    <div class="tiro-wrap"><div class="tiro-lbl">MARCAR BLOCOS — ${tiros.length}/${p.blocks} concluídos</div><div class="tiro-btns">${blocoBoxes}</div></div>`;
+    <div class="pline"><span class="p-phase">Aquecimento</span><span class="p-speed" style="color:var(--t2)">${cfg.warmSp} km/h</span><span class="p-dur">${cfg.warm} min</span></div>
+    <div class="pline"><span class="p-phase">Bloco</span><span class="p-speed" style="color:var(${col})">${cfg.wSp} km/h</span><span class="p-dur">${cfg.wDur}</span><button class="timer-btn" onclick="openTimerFromClock('${cfg.wDur}','Bloco forte')">⏱</button></div>
+    <div class="pline"><span class="p-phase">Recuperação</span><span class="p-speed" style="color:var(--t2)">${cfg.rSp} km/h</span><span class="p-dur">${cfg.rDur}</span><button class="timer-btn" onclick="openTimerFromClock('${cfg.rDur}','Recuperação')">⏱</button></div>
+    <div class="pline"><span class="p-phase">Cool Down</span><span class="p-speed" style="color:var(--t2)">4.5–5.0 km/h</span><span class="p-dur">${cfg.cool} min</span></div>
+    <div style="margin-top:8px;font-size:11px;color:var(--amber);font-style:italic">⚑ ${cfg.note}</div>
+    <div class="tiro-wrap"><div class="tiro-lbl">MARCAR BLOCOS — ${tiros.length}/${cfg.blocks} concluídos</div><div class="tiro-btns">${blocoBoxes}</div></div>`;
+  };
+
+  if(c.type==='continuous'){
+    body=renderPhases([
+      {phase:'Aquecimento',speed:`${p.warm} km/h`,dur:`${p.warmDur} min`,tip:'caminhada rápida + trote leve'},
+      {phase:'Corrida',speed:`${p.spMin}${p.spMax!==p.spMin?'–'+p.spMax:''} km/h`,dur:p.dur,tip:p.tip,strong:true},
+      {phase:'Cool Down',speed:'4.5–5.0 km/h',dur:'3–5 min'}
+    ]);
+  } else if(c.type==='intervals'){
+    body=renderIntervals(p);
+  } else if(c.type==='mixed'){
+    if(p.kind==='intervals') body=renderIntervals(p);
+    else body=renderPhases(p.phases || [], p.note || '');
   }
 
   return`<div class="cc">
