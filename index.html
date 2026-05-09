@@ -168,8 +168,8 @@ const D = {
       }}
   },
   ter:{
-    label:'Terça',short:'Ter',type:'Legs A + Core Principal',color:'amber',muscles:'Quadríceps · Glúteos · Posterior · Core',noCardio:true,
-    info:'Foco dominante em quadríceps + core principal com carga. Treino pesado da semana para pernas, sem corrida. Trabalhe forte, mas preserve 1–2 repetições na reserva nos compostos. O core entra com progressão, mas sem transformar o dia em massacre.',
+    label:'Terça',short:'Ter',type:'Legs A + Abdômen',color:'amber',muscles:'Quadríceps · Glúteos · Posterior · Abdômen',noCardio:true,
+    info:'Foco dominante em quadríceps + abdômen com carga. Treino pesado da semana para pernas, sem corrida. Trabalhe forte, mas preserve 1–2 repetições na reserva nos compostos. O abdominal entra de forma simples e eficiente: crunch na polia com progressão de carga.',
     exercises:[
       {id:'t1',name:'Agachamento Smith ou Livre',mus:'Quadríceps',sets:3,r1:6,r2:8,rest1:120,rest2:180,note:'Principal do dia. Profundidade segura, tronco firme e cadência controlada.'},
       {id:'t2',name:'Leg Press 45°',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:120,rest2:120},
@@ -177,9 +177,7 @@ const D = {
       {id:'t4',name:'Cadeira Extensora',mus:'Quad isol.',sets:3,r1:10,r2:15,rest1:60,rest2:75,note:'Última série pode chegar perto da falha. Drop-set só ocasionalmente.'},
       {id:'t5',name:'Mesa Flexora',mus:'Posterior',sets:3,r1:8,r2:12,rest1:75,rest2:90,note:'Estímulo complementar de posterior, sem transformar em segundo dia pesado de posterior.'},
       {id:'t6',name:'Panturrilha Sentado',mus:'Sóleo',sets:3,r1:10,r2:20,rest1:45,rest2:60},
-      {id:'t7',name:'Crunch na Polia c/ Corda',mus:'Abs pesado',sets:3,r1:10,r2:15,rest1:45,rest2:60,note:'Core principal com carga. Controle total e 1s de contração no final.'},
-      {id:'t8',name:'Elevação de Pernas na Paralela',mus:'Abs inferior',sets:3,r1:10,r2:15,rest1:45,rest2:60,note:'Subida controlada e descida lenta. Evite jogar o quadril.'},
-      {id:'t9',name:'Prancha com Carga ou Prancha Longa',mus:'Core estab.',sets:3,r1:30,r2:60,rest1:45,rest2:60,isTime:true,unit:'seg',note:'Progrida carga ou tempo quando bater o topo com postura firme.'},
+      {id:'t7',name:'Crunch na Polia c/ Corda',mus:'Abs pesado',sets:4,r1:10,r2:15,rest1:45,rest2:60,note:'Abdominal principal com carga. Flexione a coluna, não puxe com os braços. Quando bater 4x15 com controle, suba levemente a carga.'},
     ],
   },
   qua:{
@@ -212,8 +210,8 @@ const D = {
       }}
   },
   sex:{
-    label:'Sexta',short:'Sex',type:'Legs B + Core',color:'amber',muscles:'Posterior · Glúteos · Quadríceps · Core leve',noCardio:true,
-    info:'Foco em posterior e glúteo com volume inteligente. Stiff e hip thrust ficam com 3 séries válidas bem feitas. Mesa + cadeira flexora coexistem, com prioridade para a mesa por melhor execução. Ao final, entra um core simples e leve com 2 séries por exercício. Na semana 8, reduza volume e não falhe: teste de 5 km será no sábado.',
+    label:'Sexta',short:'Sex',type:'Legs B + Abdômen',color:'amber',muscles:'Posterior · Glúteos · Quadríceps · Abdômen',noCardio:true,
+    info:'Foco em posterior e glúteo com volume inteligente. Stiff e hip thrust ficam com 3 séries válidas bem feitas. Mesa + cadeira flexora coexistem, com prioridade para a mesa por melhor execução. Ao final, entra crunch na polia como abdominal direto e eficiente. Na semana 8, reduza volume e não falhe: teste de 5 km será no sábado.',
     exercises:[
       {id:'sx1',name:'Stiff c/ Barra',mus:'Posterior',sets:3,r1:6,r2:8,rest1:120,rest2:180,note:'Movimento principal. Mantenha lombar neutra e deixe 1–2 reps na reserva.'},
       {id:'sx2',name:'Hip Thrust c/ Barra',mus:'Glúteo',sets:3,r1:8,r2:12,rest1:120,rest2:120},
@@ -222,9 +220,7 @@ const D = {
       {id:'sx5',name:'Leg Press 45° — Pés Médios/Altos',mus:'Quad + Glúteo',sets:3,r1:8,r2:12,rest1:90,rest2:120,note:'Estímulo geral de perna sem precisar outro agachamento pesado.'},
       {id:'sx6',name:'Cadeira Abdutora',mus:'Glúteo med.',sets:3,r1:12,r2:20,rest1:45,rest2:60},
       {id:'sx7',name:'Panturrilha em Pé',mus:'Panturrilha',sets:3,r1:10,r2:20,rest1:45,rest2:60},
-      {id:'sx8',name:'Abdominal Supra',mus:'Core leve',sets:2,r1:12,r2:20,rest1:30,rest2:45,note:'Core simples pós-Legs B. Controle a subida e não transforme em treino até a falha.'},
-      {id:'sx9',name:'Abdominal Infra',mus:'Core leve',sets:2,r1:10,r2:15,rest1:30,rest2:45,note:'Mantenha a lombar estável. Menos amplitude com controle vale mais que roubar o movimento.'},
-      {id:'sx10',name:'Prancha',mus:'Core estab.',sets:2,r1:30,r2:60,rest1:30,rest2:45,isTime:true,unit:'seg',note:'Finalização curta. Faça firme, sem perder postura.'},
+      {id:'sx8',name:'Crunch na Polia c/ Corda',mus:'Abs pesado',sets:4,r1:10,r2:15,rest1:45,rest2:60,note:'Segundo estímulo semanal de abdômen. Na sexta, faça mais controlado, sem falha excessiva, para não pesar no longuinho de sábado.'},
     ],
   },
   sab:{
